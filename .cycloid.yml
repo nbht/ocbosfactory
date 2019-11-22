@@ -11,7 +11,7 @@ technologies:
   - technology: AZURE cloud
     version: n/a
 author: 'OCB CSD OS Factory'
-image: 'https://github.com/nbht/ocbosfactory/sapicon.png'
+image: 'https://github.com/nbht/ocbosfactory/blob/stacks/sapicon.png'
 type: 'stack'
 config:
   # Configuration of the CI pipeline
