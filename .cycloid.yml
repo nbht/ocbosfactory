@@ -1,0 +1,38 @@
+# Configuration of the CI pipeline
+name: 'SAP HANA Deployment'
+canonical: 'sap-hana-infra'
+description: 'Stack to deploy SAP HANA on Azure'
+keywords:
+  - 'azure'
+  - 'linux'
+  - 'demo'
+  - 'sap hana'
+technologies:
+  - technology: AZURE cloud
+    version: n/a
+author: 'OCB CSD OS Factory'
+image: 'https://github.com/nbht/ocbosfactory/sapicon.png'
+type: 'stack'
+config:
+  # Configuration of the CI pipeline
+  pipeline:
+    pipeline:
+      path: 'pipeline/pipeline.yml'
+    variables:
+      path: 'pipeline/variables.sample.yml'
+
+  # Configuration of terraform to setup the infrastructure
+  terraform:
+    terraform:
+      path: 'terraform/azinfra.tf'
+      destination: '($ project $)/terraform/($ environment $)/azinfra.tf'
+    terraform-variable:
+      path: 'terraform/azvariable.tf'
+      destination: '($ project $)/terraform/($ environment $)/azvariable.tf'
+
+  # Configuration of ansible for mount all disks
+  ansible:
+    ansible:
+      path: 'ansible/mountfs.yml'
+      destination: '($ project $)/ansible/($ environment $)-mountfs.yml'
+
