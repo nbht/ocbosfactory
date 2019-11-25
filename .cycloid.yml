@@ -1,6 +1,6 @@
 # Configuration of the CI pipeline
 name: 'Azure SAP HANA Deployment'
-canonical: 'sap-hana-infra'
+canonical: 'azure-sap-hana-stack'
 description: 'This stack will deploy SAP HANA on a Azure VM'
 keywords:
   - 'azure'
