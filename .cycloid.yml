@@ -1,7 +1,7 @@
 # Configuration of the CI pipeline
-name: 'SAP HANA Deployment'
+name: 'Azure SAP HANA Deployment'
 canonical: 'sap-hana-infra'
-description: 'Stack to deploy SAP HANA on Azure'
+description: 'This stack will deploy SAP HANA on a Azure VM'
 keywords:
   - 'azure'
   - 'linux'
@@ -11,7 +11,7 @@ technologies:
   - technology: AZURE cloud
     version: n/a
 author: 'OCB CSD OS Factory'
-image: 'https://github.com/nbht/ocbosfactory/blob/stacks/sapicon.png'
+image: 'https://raw.githubusercontent.com/nbht/ocbosfactory/stacks/sapicon.png'
 type: 'stack'
 config:
   # Configuration of the CI pipeline

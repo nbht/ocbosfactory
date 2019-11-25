@@ -1,0 +1,100 @@
+#
+# Terraform
+#
+
+# Amazon access to use to run terraform. Usually admin account to be able to create Amazon services.
+
+#. azure_access_key (required): ((azure.access_key))
+#+ Amazon AWS access key for Terraform. See value format [here](https://docs.cycloid.io/advanced-guide/integrate-and-use-cycloid-credentials-manager.html#vault-in-the-pipeline)
+
+#. azure_secret_key (required): ((azure.secret_key))
+#+ Amazon AWS secret key for Terraform. See value format [here](https://docs.cycloid.io/advanced-guide/integrate-and-use-cycloid-credentials-manager.html#vault-in-the-pipeline)
+
+#. azure_default_region (required): eu-west-1
+#+ Amazon AWS region to use for Terraform.
+aws_default_region: us-east-2
+
+#. terraform_storage_bucket_name (required): ($ organization_canonical $)-terraform-remote-state
+#+ AWS S3 bucket name to store terraform remote state file.
+terraform_storage_bucket_name: ($ organization_canonical $)-terraform-remote-state
+
+aws_access_key: ((aws.access_key))
+aws_secret_key: ((aws.secret_key))
+
+
+#
+# Ansible
+#
+
+#. sap_deploy_bucket_name (required): ($ project $)-deploy
+#+ AWS S3 bucket name in which we will store your sap built code.
+sap_deploy_bucket_name: ($ project $)-deploy
+
+#. sap_deploy_bucket_object_path (required): /catalog-sap/($ environment $)/sap.tar.gz
+#+ AWS S3 bucket path in which we will store your sap built code.
+sap_deploy_bucket_object_path: /catalog-sap/($ environment $)/sap.tar.gz
+
+
+#. bastion_url (required): user@bastion.server.com
+#+ bastion URL used by ansible to connect on AWS EC2 instances.
+bastion_url: user@bastion.server.com
+
+#. bastion_private_key_pair (required): ((ssh_bastion.ssh_key))
+#+ bastion SSH private key used by ansible to connect on AWS EC2 instances and the bastion itself.
+azure_bastion_key: ((ssh_bastion.ssh_key))
+azure_ecs_key: ((ssh_ecs.ssh_key))
+ansible_remote_user: cloud 
+azure_client_id: ((raw_azure-nb-aksk.client_id))
+azure_secret: ((raw_azure-nb-aksk.client_secret))
+azure_subscription_id: ((raw_azure-nb-aksk.subscription_id))
+azure_tenant: ((raw_azure-nb-aksk.tenant_id))
+azure_default_region: East US
+
+#
+# Repos
+#
+
+#. config_git_repository (required): git@github.com:MyUser/config-sap.git
+#+ Git repository URL containing the config of the stack.
+config_git_repository: git@github.com:nbht/azsap-config.git 
+
+#. config_git_branch (required): master
+#+ Branch of the config Git repository.
+config_git_branch: master
+
+#. config_git_private_key (required): ((git_config.ssh_key))
+#+ SSH key pair to fetch the config Git repository.
+config_git_private_key: ((git_nidhi-git-ssh.ssh_key))
+
+
+#
+# Default variables that shouldn't be changed except if needed
+#
+
+#. env (required): ($ environment $)
+#+ Name of the project's environment.
+env: ($ environment $)
+
+#. project (required): ($ project $)
+#+ Name of the project.
+project: ($ project $)
+
+#. customer (required): ($ organization_canonical $)
+#+ Name of the Cycloid Organization, used as customer variable name.
+customer: ($ organization_canonical $)
+
+#. stack_git_branch (required): master
+#+ Branch to use on the public stack Git repository
+stack_git_branch: stacks
+
+#. config_ansible_path (required): ($ project $)/ansible
+#+ Path of Ansible files in the config Git repository
+config_ansible_path: ($ project $)/ansible/*
+
+#. config_terraform_path (required): ($ project $)/terraform/($ environment $)
+#+ Path of Terraform files in the config git repository
+config_terraform_path: ($ project $)/terraform/($ environment $)
+
+#. packer_ansible_version (required): "2.7"
+#+ Ansible version used in packer and cycloid-toolkit ansible runner
+ansible_version: "2.7"
