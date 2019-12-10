@@ -1,6 +1,6 @@
 - hosts: mylinuxVM
   gather_facts: no
-  remote_user: platon
+  remote_user: cloud
   become: true
   pre_tasks:
   - raw: test -e /usr/bin/python || (zypper -n install  python)
