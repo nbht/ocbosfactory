@@ -260,11 +260,11 @@ jobs:
           ANSIBLE_PLAYBOOK_PATH: ansible-playbook
           ANSIBLE_PLAYBOOK_NAME: mountfs.yml
           ANSIBLE_REMOTE_USER: ((ansible_remote_user)) 
-          AZURE_CLIENT_ID: ((raw_azure-nb-aksk.client_id))
+          AZURE_CLIENT_ID: ((raw_abhay_azure.client_id))
           AZURE_DEFAULT_REGION: East US
-          AZURE_SECRET: ((raw_azure-nb-aksk.client_secret))
-          AZURE_SUBSCRIPTION_ID: ((raw_azure-nb-aksk.subscription_id))
-          AZURE_TENANT: ((raw_azure-nb-aksk.tenant_id))
+          AZURE_SECRET: ((raw_abhay_azure.client_secret))
+          AZURE_SUBSCRIPTION_ID: ((raw_abhay_azure.subscription_id))
+          AZURE_TENANT: ((raw_abhay_azure.tenant_id))
           EXTRA_ANSIBLE_ARGS: '--inventory azure_rm.py'
           EXTRA_VARS:
             customer: ((customer))
