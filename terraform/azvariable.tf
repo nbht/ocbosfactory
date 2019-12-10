@@ -171,7 +171,7 @@ variable "disk5_size" {
 # Following variable is use for authentication azure from terraform
 
 variable "subscription_id" {
-  default = "c11866fc-33f7-4c1d-821ffeeeef"
+  default = "c11866fc-33f7-4c1d-821d-1100dd13b8ea"
   description = "Mention subscription_id"
 }
 
