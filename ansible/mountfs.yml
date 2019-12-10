@@ -1,0 +1,87 @@
+- hosts: mylinuxVM
+  gather_facts: no
+  remote_user: cloud
+  become: true
+  pre_tasks:
+  - raw: test -e /usr/bin/python || (zypper -n install  python)
+  - setup: # aka gather_facts
+  tasks:
+  - name: Creates directory
+    file:
+      path: /hana/shared
+      state: directory
+
+  - name: Create a xfs filesystem on /dev/sdc
+    filesystem:
+      fstype: xfs
+      dev: /dev/sdc
+
+  - mount:
+      fstype: xfs
+      src: /dev/sdc
+      path: /hana/shared
+      state: mounted
+
+  - name: Creates directory
+    file:
+      path: /usr/sap
+      state: directory
+
+  - name: Create a xfs filesystem on /dev/sdd
+    filesystem:
+      fstype: xfs
+      dev: /dev/sdd
+
+  - mount:
+      fstype: xfs
+      src: /dev/sdd
+      path: /usr/sap
+      state: mounted
+
+  - name: Creates directory
+    file:
+      path: /hana/data
+      state: directory
+
+  - name: Create a xfs filesystem on /dev/sde
+    filesystem:
+      fstype: xfs
+      dev: /dev/sde
+
+  - mount:
+      fstype: xfs
+      src: /dev/sde
+      path: /hana/data
+      state: mounted
+
+  - name: Creates directory
+    file:
+      path: /hana/log
+      state: directory
+
+  - name: Create a xfs filesystem on /dev/sdf
+    filesystem:
+      fstype: xfs
+      dev: /dev/sdf
+
+  - mount:
+      fstype: xfs
+      src: /dev/sdf
+      path: /hana/log
+      state: mounted
+
+  - name: Creates directory
+    file:
+      path: /sapdump
+      state: directory
+
+  - name: Create a xfs filesystem on /dev/sdg
+    filesystem:
+      fstype: xfs
+      dev: /dev/sdg
+
+  - mount:
+      fstype: xfs
+      src: /dev/sdg
+      path: /sapdump
+      state: mounted
